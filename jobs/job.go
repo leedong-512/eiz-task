@@ -90,7 +90,7 @@ func NewCommandJob(id int, name string, command string) *Job {
 	return job
 }
 
-//远程执行任务 密钥验证
+// 远程执行任务 密钥验证
 func RemoteCommandJob(id int, name string, command string, servers *models.TaskServer) *Job {
 	job := &Job{
 		id:   id,
@@ -300,7 +300,7 @@ func (j *Job) Run() {
 			if j.task.NotifyType == 0 && toEmail != "" {
 				//邮件
 				//SendToChan(to, subject, body, mailtype string) bool
-				subject := fmt.Sprintf("PPGo_Job定时任务异常：%s", j.task.TaskName)
+				subject := fmt.Sprintf("Eiz_Job定时任务异常：%s", j.task.TaskName)
 				body := fmt.Sprintf(
 					`Hello,定时任务出问题了：
 <p style="font-size:16px;">任务执行详情：</p>
@@ -318,7 +318,7 @@ func (j *Job) Run() {
 <br/>
 <br/>
 <p>-----------------------------------------------------------------<br />
-本邮件由PPGo_Job定时系统自动发出，请勿回复<br />
+本邮件由Eiz_Job定时系统自动发出，请勿回复<br />
 如果要取消邮件通知，请登录到系统进行设置<br />
 </p>
 `, j.task.Id,
@@ -359,7 +359,7 @@ func (j *Job) Run() {
 	j.task.Update("PrevTime", "ExecuteTimes")
 }
 
-//冗余代码
+// 冗余代码
 type adminInfo struct {
 	Id       int
 	Email    string

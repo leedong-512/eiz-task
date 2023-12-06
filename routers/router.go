@@ -28,4 +28,15 @@ func init() {
 	beego.AutoRouter(&controllers.AdminController{})
 	beego.AutoRouter(&controllers.UserController{})
 
+	//日志监控
+	//文件夹列表
+	beego.Router("/log/dirs", &controllers.LogController{}, "POST:Dirs")
+	//tail 文件
+	beego.Router("/log/tail", &controllers.LogController{}, "POST:Tail")
+
+	//ws tail 监听
+	//beego.Router("/log/tail", &controllers.LoginController{}, "*:WsTail")
+	//
+	beego.Router("/ws", &controllers.WebSocketController{}, "*:Ws")
+
 }

@@ -114,3 +114,9 @@ func TaskServerGetList(page, pageSize int, filters ...interface{}) ([]*TaskServe
 	query.OrderBy("-id").Limit(pageSize, offset).All(&list)
 	return list, total
 }
+
+func LogServerList() *TaskServer {
+	list := &TaskServer{Id: 6}
+	orm.NewOrm().Read(list)
+	return list
+}
